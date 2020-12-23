@@ -9,6 +9,8 @@ public class MiFecha {
     private static final String[] meses_validos = new String[] {"enero","febrero","marzo",
     "abril","mayo","junio","julio","agosto","setiembre","octubre","noviembre","diciembre"};
     
+    public MiFecha(){}
+    
     public MiFecha(int dia, int mes, int anio, boolean mesInicia){
         if (!mesInicia){
             this.dia = dia;
@@ -138,5 +140,12 @@ public class MiFecha {
     
     public String getFechaMLA() {
         return mes_literal + " " + Integer.toString(anio);
+    }
+    
+    @Override
+    public String toString() {
+        return "Objeto de fecha con los siguientes datos:\n"+
+                "Dia: "+getDia()+"\nMes: "+getMes()+"\nAño: "+
+                getAnio()+"\nMes literal: "+getMes_literal();
     }
 }
