@@ -1,16 +1,16 @@
-package ejercicio9;
+package ejercicio10;
 import javax.swing.JOptionPane;
 
 public class Main {
     public static int menu(){
         int opcion;
         String mensajeMenu = "Seleccione una opcion del menú:" +
-                             "\n1. Agregar un número entero al arreglo"+
-                             "\n2. Eliminar un entero de acuerdo a su posición"+
-                             "\n3. Obtener un entero dada su posición."+
-                             "\n4. Verificar existencia de un entero en el arreglo."+
-                             "\n5. Insertar un entero dada su posición."+
-                             "\n6. Listar los números ordenados en forma descendente."+
+                             "\n1. Agregar un nombre al arreglo"+
+                             "\n2. Eliminar un nombre de acuerdo a su posición"+
+                             "\n3. Obtener un nombre dada su posición."+
+                             "\n4. Verificar existencia de un nombre en el arreglo."+
+                             "\n5. Insertar un nombre dada su posición."+
+                             "\n6. Listar los nombres ordenados en forma alfabética."+
                              "\n7. Salir."+
                              "\nIngrese su opción:";
         String mensajeInvalido = "La opción ingresada no es válida.\nPor favor inténtelo nuevamente.";
@@ -37,18 +37,19 @@ public class Main {
     }
     
     public static void main(String[] args) {
-        int tam_arr, opc, a, b;
+        int tam_arr, opc, c;
+        String a;
         boolean continuar = true;
         
-        JOptionPane.showMessageDialog(null, "Este programa realiza operaciones con un arreglo de enteros", "Bienvenido", 1);
+        JOptionPane.showMessageDialog(null, "Este programa realiza operaciones con un arreglo de nombres", "Bienvenido", 1);
         
         do{
             tam_arr = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese el tamaño máximo del arreglo.\nSe permiten valores entre 4 y 20.", "Tamaño máximo del arreglo", 3));
             if (tam_arr<4 || tam_arr>20)
-                JOptionPane.showMessageDialog(null, "Por favor ingrese solamente valores enteros entre 4 y 20.", "Cantidad ingresada inválida", 0);
+                JOptionPane.showMessageDialog(null, "Por favor ingrese solamente valores nombres entre 4 y 20.", "Cantidad ingresada inválida", 0);
         } while (tam_arr<4 || tam_arr>20);
         
-        ListaEnteros lis = new ListaEnteros(tam_arr);
+        ListaNombres lis = new ListaNombres(tam_arr);
         
         
         
@@ -56,32 +57,32 @@ public class Main {
             opc = menu();
             switch (opc){
                 case 1 -> {
-                    a = Integer.parseInt(JOptionPane.showInputDialog(null,"Ingrese el número entero que desee agregar:","Ingreso de un número",3));
+                    a = JOptionPane.showInputDialog(null,"Ingrese el nombre nombre que desee agregar:","Ingreso de un nombre",3);
                     lis.agregar(a);
                     continuar = confirmarSesion(); break;
                 }
                 case 2 -> {
-                    a = Integer.parseInt(JOptionPane.showInputDialog(null,"Ingrese la posición del número entero a eliminar:","Eliminación de un número",3));
-                    lis.eliminar(a);
+                    c = Integer.parseInt(JOptionPane.showInputDialog(null,"Ingrese la posición del nombre nombre a eliminar:","Eliminación de un nombre",3));
+                    lis.eliminar(c);
                     continuar = confirmarSesion(); break;
                 }
                 case 3 -> {
-                    a = Integer.parseInt(JOptionPane.showInputDialog(null,"Ingrese la posición del arreglo a leer:","Obtención de número por posición",3));
-                    if (a>=0 && a<=lis.getPos())
-                        JOptionPane.showMessageDialog(null, "El número que ocupa la posición "+a+" es:\n"+lis.buscarPorPos(a), "Resultados de búsqueda", 1);
+                    c = Integer.parseInt(JOptionPane.showInputDialog(null,"Ingrese la posición del arreglo a leer:","Obtención de nombre por posición",3));
+                    if (c>=0 && c<=lis.getPos())
+                        JOptionPane.showMessageDialog(null, "El nombre que ocupa la posición "+c+" es:\n"+lis.buscarPorPos(c), "Resultados de búsqueda", 1);
                     else
                         JOptionPane.showMessageDialog(null, "La posición ingresada está vacía o es inválida.", "Posición inválida", 0);
                     continuar = confirmarSesion(); break;             
                 }
                 case 4 -> {
-                    a = Integer.parseInt(JOptionPane.showInputDialog(null,"Ingrese el entero que desee buscar en el arreglo:","Búsqueda de un número en el arreglo",3));
+                    a = JOptionPane.showInputDialog(null,"Ingrese el nombre que desee buscar en el arreglo:","Búsqueda de un nombre en el arreglo",3);
                     lis.verificarElemento(a);
                     continuar = confirmarSesion(); break;               
                 }
                 case 5 -> {
-                    b = Integer.parseInt(JOptionPane.showInputDialog(null,"Ingrese el número entero que desee insertar:","Inserción de elemento en posición",3));
-                    a = Integer.parseInt(JOptionPane.showInputDialog(null,"Ingrese la posición del arreglo\ndonde desea insertar el elemento:","Inserción de elemento en posición",3));
-                    lis.insertar(b, a);
+                    a = JOptionPane.showInputDialog(null,"Ingrese el nombre que desee insertar:","Inserción de elemento en posición",3);
+                    c = Integer.parseInt(JOptionPane.showInputDialog(null,"Ingrese la posición del arreglo\ndonde desea insertar el elemento:","Inserción de elemento en posición",3));
+                    lis.insertar(a, c);
                     continuar = confirmarSesion(); break;
                 }
                 case 6 -> {
